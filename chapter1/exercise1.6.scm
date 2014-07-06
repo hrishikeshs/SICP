@@ -32,7 +32,8 @@
 ;procedure that must be applied to the rest of the list. In such a scenario, the rules state that to evaluate an expression, you first evaluate the 
 ;parts of the expression and then substitute in the body of the procedure the values that are yielded by the evaluation of the parts of the expression.
 ;This means that the list (new-if (good-enough? guess x) (guess) (sqrt-iter (improve guess x))) will be evaluated such that both the success and the 
-;failure branches of the predicate test will be eval'd and the process gets stuck in an infinite loop.
+;failure branches of the predicate test will be eval'd and the process gets stuck in an infinite recursion and the stack
+;gets exhausted eventually and you get an error saying `maximum recursion depth exceeded`.
 
 
 
