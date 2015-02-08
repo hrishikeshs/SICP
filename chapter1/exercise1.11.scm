@@ -9,9 +9,16 @@
       (+ (recursive-fn (- n 1))
          (* 2 (recursive-fn (- n 2)))
          (* 3 (recursive-fn (- n 3))))))
-;; Iterative version ???
-;;
 
+
+;;iterative-version
+;;easy as pie! :D 
+(define (iterative-fn n)
+  (define (helper nminusone nminustwo nminusthree i)
+    (if (= i n) (+ nminusone (* 2 nminustwo) (* 3 nminusthree))
+        (helper (+ nminusone (* 2 nminustwo) (* 3 nminusthree)) nminusone nminustwo (+ i 1))))
+  (if (< n 3) n
+      (helper 2 1 0 3)))
 
 
 
