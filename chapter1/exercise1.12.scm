@@ -41,10 +41,17 @@
           x)
       (last (cdr x))))
 
+(define (flatten sequence)
+  (cond ((null? sequence) '())
+        ((list? (car sequence)) (append (flatten (car sequence))
+                                        (flatten (cdr sequence))))
+        (else (cons (car sequence) (flatten (cdr sequence))))))
+
+
 (define (pascals-triangle level)
   (if (= level 1) '(1)
       (list (pascals-triangle (- level 1))
-            (sum-list-pascal (last (pascals-triangle (- level 1)))))))
+            (flatten (sum-list-pascal (last (pascals-triangle (- level 1))))))))
 
 
                               
