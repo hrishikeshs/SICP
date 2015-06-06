@@ -49,9 +49,12 @@
 
 
 (define (pascals-triangle level)
-  (if (= level 1) '(1)
-      (list (pascals-triangle (- level 1))
-            (flatten (sum-list-pascal (last (pascals-triangle (- level 1))))))))
+  (if (= level 1) '(1) ;;base case
+      (list (pascals-triangle (- level 1))                                       ;;munge together the pascals-triangle for n-1
+            (flatten (sum-list-pascal (last (pascals-triangle (- level 1)))))))) ;;generate the nth row
+                                                                                 ;;and make it a simple list(This bothers me a little bit because
+                                                                                 ;;flatten should ideally be somewhere else. But I can live with that for now.
+
 
 
                               
